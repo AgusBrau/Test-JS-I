@@ -161,7 +161,7 @@ function numeroRandom() {
   //Generar un número al azar entre 0 y 1 y devolverlo
   //Pista: investigá qué hace el método Math.random()
   let randomEntreCeroyUno = () => Math.random();
-  return randomEntreCeroyUno;
+  return randomEntreCeroyUno();
 }
 
 function esPositivo(numero) {
@@ -192,7 +192,7 @@ function combinarNombres(nombre, apellido) {
   // Devuelve "nombre" y "apellido" combinados en una string y separados por un espacio.
   // Ejemplo: "Soy", "Cristian" -> "Soy Cristian"
   // Tu código:
-  let nombreCompleto = (nombre, apellido) => nombre + "" + apellido;
+  let nombreCompleto = (nombre, apellido) => nombre + " " + apellido;
   return nombreCompleto(nombre, apellido);
 }
 
@@ -200,8 +200,8 @@ function obtenerSaludo(nombre) {
   // Toma la string "nombre" y concatena otras string en la cadena para que tome la siguiente forma:
   // "Nahuel" -> "Hola Nahuel!"
   // Tu código:
-  let saludar = (str) => "Hola " + str + "!";
-  return saludar(str);
+  let saludar = (nombre) => "Hola " + nombre + "!";
+  return saludar(nombre);
 }
 
 function deEuroAdolar(euro) {
