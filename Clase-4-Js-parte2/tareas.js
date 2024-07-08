@@ -6,14 +6,26 @@ function crearGato(nombre, edad) {
   // Agrega un método (funcion) llamado "meow" que devuelva el string "Meow!"
   // Devuelve el objeto
   // Tu código:
+  const cat = {
+    nombre: nombre,
+    edad: edad,
+    meow: function () {
+      return "Meow!";
+    },
+  };
+  return cat;
 }
-
 
 function agregarPropiedad(objeto, property) {
   // Agrega una propiedad al objeto (argumento "objeto") con el valor `null`
   // Devuelve el objeto
   // NOTA: El nombre de la propiedad no es "propiedad", el nombre es el valor del argumento llamado "property" (una cadena/string)
   // Tu código:
+  let nuevaProperty = (objeto, property) => {
+    objeto[property] = null;
+    return objeto;
+  };
+  return nuevaProperty(objeto, property);
 }
 
 function invocarMetodo(objeto, metodo) {
@@ -21,40 +33,69 @@ function invocarMetodo(objeto, metodo) {
   // Invoca ese método
   // Nada necesita ser devuelto ("returned")
   // Tu código:
+  let callMetodo = (objeto, metodo) => {
+    //   objeto[metodo];
+  };
+  return callMetodo(objeto, metodo);
 }
 
 function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
   // "objetoMisterioso" tiene una propiedad llamada "numeroMisterioso"
   // Multiplica el numeroMisterioso por 5 y devuelve el producto
   // Tu código:
+  let porCinco = (objetoMisterioso) => {
+    return objetoMisterioso.numeroMisterioso * 5;
+  };
+  return porCinco(objetoMisterioso);
 }
 
 function eliminarPropiedad(objeto, unaPropiedad) {
-  // Elimina la propiedad de objeto cuyo nombre está pasado por el parametro unaPropiedad 
+  // Elimina la propiedad de objeto cuyo nombre está pasado por el parametro unaPropiedad
   // tip: tenes que usar bracket notation
   // Devuelve el objeto
   // Tu código:
+  let delProperty = (objeto, unaPropiedad) => {
+    delete objeto[unaPropiedad];
+    return objeto;
+  };
+  return delProperty(objeto, unaPropiedad);
 }
 
 function nuevoUsuario(nombre, email, password) {
   // Crea un nuevo objeto con las propiedades coincidiendo con los argumentos que se pasan a la función
   // Devuelve el objeto
   // Tu código:
+  let crearUsuario = (nombre, email, password) => {
+    const USER = {
+      nombre: nombre,
+      email: email,
+      password: password,
+    };
+    return USER;
+  };
+  return crearUsuario(nombre, email, password);
 }
 
 function tieneEmail(usuario) {
   // Devuelve "true" si el usuario tiene un valor definido para la propiedad "email"
   // De lo contratio, devuelve "false"
   // Tu código:
+  let checkMail = (usuario) => {
+    let bool = Boolean(usuario.email);
+    return bool;
+  };
+  return checkMail(usuario);
 }
-
-
 
 function tienePropiedad(objeto, propiedad) {
   // Devuelve "true" si el objeto (parámetro "objeto") tiene una propiedad (key) cuyo nombre es igual al valor del argumento "propiedad"
   // "propiedad" es un string
   // De lo contrario, devuelve "false"
   // Tu código:
+  let checkProperty = (objeto, propiedad) => {
+    return objeto.hasOwnProperty(propiedad);
+  };
+  return checkProperty(objeto, propiedad);
 }
 
 function verificarPassword(usuario, password) {
@@ -62,12 +103,27 @@ function verificarPassword(usuario, password) {
   // Devuelve "true" si coinciden
   // De lo contrario, devuelve "false"
   // // Tu código:
+  let checkProperty = (usuario, password) => {
+    let bool = Boolean(usuario.password === password);
+    return bool;
+  };
+  return checkProperty(usuario, password);
 }
 
 function actualizarPassword(usuario, nuevaPassword) {
   // Reemplaza la contraseña existente en el objeto "usuario" con el valor de "nuevagPassword"
   // Devuelve el objeto
   // Tu código:
+  let newPass = (usuario, nuevaPassword) => {
+    let cambiaPassword = nuevaPassword;
+    let changePass = (cambiaPassword) => {
+      Object.defineProperty(usuario, "password", {
+        value: nuevaPassword,
+      });
+    };
+    changePass();
+    return usuario;
+  };
 }
 
 function agregarAmigo(usuario, nuevoAmigo) {
@@ -75,6 +131,12 @@ function agregarAmigo(usuario, nuevoAmigo) {
   // Agrega "nuevoAmigo" al final de ese array
   // Devuelve el objeto "usuario"
   // // Tu código:
+  let newAmigo = (usuario, nuevoAmigo) => {
+    let amigosArr = usuario.amigos;
+    amigosArr.push(nuevoAmigo);
+    return usuario;
+  };
+  return newAmigo(usuario, nuevoAmigo);
 }
 
 function pasarUsuarioAPremium(usuarios) {
@@ -123,5 +185,5 @@ module.exports = {
   agregarAmigo,
   pasarUsuarioAPremium,
   sumarLikesDeUsuario,
-  agregarMetodoCalculoDescuento
+  agregarMetodoCalculoDescuento,
 };
