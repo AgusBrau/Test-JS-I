@@ -71,7 +71,7 @@ function dePalabrasAFrase(palabras) {
   // Tu código:
   let stringPalabras = (palabras) => {
     let concPalabras = palabras.map((x) => x + " ");
-    concPalabras = concPalabras.join(" ");
+    concPalabras = concPalabras.join("");
     return concPalabras.trimEnd();
   };
   return stringPalabras(palabras);
@@ -126,7 +126,7 @@ function cuentoElementos(arreglo) {
   //Escribe tu código aquí:
   let esMayorque = (arreglo) => {
     let comparaMayor = (x) => x > 19;
-    return arreglo.filter(comparaMayor);
+    return arreglo.filter(comparaMayor).length;
   };
   return esMayorque(arreglo);
 }
