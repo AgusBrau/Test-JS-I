@@ -71,9 +71,8 @@ function dePalabrasAFrase(palabras) {
   // Tu código:
   let stringPalabras = (palabras) => {
     let concPalabras = palabras.map((x) => x + " ");
-    //console.log(concPalabras.toString())
-    //fijarse si el ultimo espacio se borra
-    return concPalabras.join(" ");
+    concPalabras = concPalabras.join(" ");
+    return concPalabras.trimEnd();
   };
   return stringPalabras(palabras);
 }
@@ -172,6 +171,16 @@ function todosIguales(arreglo) {
   //Escriba la función todosIguales, que indique si todos los elementos de un arreglo son iguales:
   //retornar true, caso contrario retornar false.
   //Escribe tu código aquí:
+  let comsparaIgual = (arreglo) => {
+    let lengthArr = arreglo.length - 2;
+    for (let x = 0; x <= lengthArr; x++) {
+      if (arreglo[x] !== arreglo[x + 1]) {
+        return false;
+      }
+    }
+    return true;
+  };
+  return comsparaIgual(arreglo);
 }
 
 function mesesDelAño(array) {
@@ -179,12 +188,36 @@ function mesesDelAño(array) {
   // "Enero", "Marzo" y "Noviembre", guardarlo en nuevo array y retornarlo.
   //Si alguno de los meses no está, devolver: "No se encontraron los meses pedidos"
   // Tu código:
+  let buscaMes = (array) => {
+    let filterM = (mes) => {
+      switch (mes) {
+        case "Enero":
+        case "Marzo":
+        case "Noviembre":
+          return true;
+        default:
+          return false;
+      }
+    };
+    let mesFiltrado = array.filter(filterM);
+    if (mesFiltrado.length === 3) return mesFiltrado;
+    else return "No se encontraron los meses pedidos";
+  };
+  return buscaMes(array);
 }
 
 function mayorACien(array) {
   //La función recibe un array con enteros entre 0 y 200. Recorrer el array y guardar en un nuevo array sólo los
   //valores mayores a 100 (no incluye el 100). Finalmente devolver el nuevo array.
   // Tu código:
+  let masQueCien = (array) => {
+    let filterCien = (n) => {
+      if (n > 100) return true;
+    };
+    let arrFiltrado = array.filter(filterCien);
+    return arrFiltrado;
+  };
+  return masQueCien(array);
 }
 
 // No modificar nada debajo de esta línea, de lo contrario no correrán los test.
