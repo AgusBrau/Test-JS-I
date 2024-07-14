@@ -8,12 +8,32 @@ function crearUsuario() {
   // {{nombre}} debe ser el nombre definido en cada instancia
   // Devuelve la clase
   // Tu código:
+  return class Usuario {
+    usuario;
+    nombre;
+    email;
+    password;
+    constructor(opciones) {
+      this.usuario = opciones.usuario;
+      this.nombre = opciones.nombre;
+      this.email = opciones.email;
+      this.password = opciones.password;
+      let saludar = function saludar() {
+        return "Hola, mi nombre es " + this.nombre;
+      };
+      Usuario.prototype.saludar = saludar;
+    }
+  };
 }
 
 function agregarMetodoPrototype(Constructor) {
   // Agrega un método al Constructor del `prototype`
   // El método debe llamarse "saludar" y debe devolver la string "Hello World!"
   // Tu código:
+  Object.getPrototypeOf(Constructor.prototype).saludar = function () {
+    let str = "Hello World!";
+    return str;
+  };
 }
 
 function agregarStringInvertida() {
@@ -23,13 +43,21 @@ function agregarStringInvertida() {
   // 'toni'.reverse() => 'inot'
   // Pista: Necesitarás usar "this" dentro de "reverse"
   // Tu código:
+  String.prototype.reverse = function () {
+    let newString = "";
+    for (let i = this.length - 1; i >= 0; i--) {
+      let char = this[i];
+      newString += char;
+    }
+    return newString;
+  };
 }
 
 // ---------------------------------------------------------------------------//
 //Crea el constructor de la clase "Persona"
 //Debe tener las propiedades: "nombre", "apellido", "edad" y "domicilio"
 //Debe tener un método llamado "detalle" que nos devuelve un objeto con las propiedades de la persona y sus valores.
-//Ej: { 
+//Ej: {
 //   Nombre: 'Juan',
 //   Apellido: 'Perez',
 //   Edad: 22,
@@ -38,6 +66,24 @@ function agregarStringInvertida() {
 
 class Persona {
   //Escribir el constructor aquí:
+  nombre;
+  apellido;
+  edad;
+  domicilio;
+  detalle() {
+    return {
+      nombre: this.nombre,
+      apellido: this.apellido,
+      edad: this.edad,
+      domicilio: this.domicilio,
+    };
+  }
+  constructor(data) {
+    this.nombre = data.nombre;
+    this.apellido = data.apellido;
+    this.edad = data.edad;
+    this.domicilio = data.domicilio;
+  }
 }
 
 function crearInstanciaPersona(nombre, apellido, edad, dir) {
@@ -45,14 +91,25 @@ function crearInstanciaPersona(nombre, apellido, edad, dir) {
   //Recibirá los valores "Juan", "Perez", 22, "Saavedra 123" para sus respectivas propiedades
   //Devolver la nueva persona creada
   //Tu código:
+  const datos = {
+    nombre: nombre,
+    apellido: apellido,
+    edad: edad,
+    domicilio: dir,
+  };
+  const ejemplo = new Persona(datos);
+  return ejemplo;
 }
 
 function agregarMetodo() {
-  //La función agrega un método "datos" a la clase Persona que toma el nombre y la edad de la persona y devuelve: 
+  //La función agrega un método "datos" a la clase Persona que toma el nombre y la edad de la persona y devuelve:
   //Ej: "Juan, 22 años"
   //Tu código:
+  Object.getPrototypeOf(Persona.prototype).DATOS = function () {
+    let result = this.nombre + ", " + this.edad + " años";
+    return result;
+  };
 }
-
 
 // No modificar nada debajo de esta línea
 // --------------------------------
@@ -63,5 +120,5 @@ module.exports = {
   agregarStringInvertida,
   crearInstanciaPersona,
   agregarMetodo,
-  Persona
+  Persona,
 };
