@@ -33,10 +33,13 @@ function invocarMetodo(objeto, metodo) {
   // Invoca ese método
   // Nada necesita ser devuelto ("returned")
   // Tu código:
-  let callMetodo = (objeto, metodo) => {
-    //   objeto[metodo];
-  };
-  return callMetodo(objeto, metodo);
+  // let callMetodo = (objeto, metodo) => {
+  //   let soyMetodo = ({ [metodo]: invocar } = objeto);
+  //   soyMetodo;
+  //   return invocar();
+  // };
+  // return callMetodo(objeto, metodo);
+  objeto[metodo]();
 }
 
 function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
@@ -124,6 +127,7 @@ function actualizarPassword(usuario, nuevaPassword) {
     changePass();
     return usuario;
   };
+  return newPass(usuario, nuevaPassword); //Chequear de vuelta
 }
 
 function agregarAmigo(usuario, nuevoAmigo) {
@@ -145,6 +149,15 @@ function pasarUsuarioAPremium(usuarios) {
   // Define cada propiedad "esPremium" de cada objeto como "true"
   // Devuelve el array de usuarios
   // Tu código:
+  let turnPremium = (usuarios) => {
+    usuarios.forEach((obj, index, arr) => {
+      Object.defineProperty(obj, "esPremium", {
+        value: true,
+      });
+    });
+    return usuarios;
+  };
+  return turnPremium(usuarios);
 }
 
 function sumarLikesDeUsuario(usuario) {
@@ -154,6 +167,15 @@ function sumarLikesDeUsuario(usuario) {
   // Suma todos los likes de todos los objetos "post"
   // Devuelve la suma
   // Tu código:
+  let sumarLikes = (usuario) => {
+    let arrPosts = usuario.posts;
+    let sum = 0;
+    arrPosts.forEach((obj, index, arr) => {
+      sum = sum + obj.likes;
+    });
+    return sum;
+  };
+  return sumarLikes(usuario);
 }
 
 function agregarMetodoCalculoDescuento(producto) {
@@ -166,6 +188,14 @@ function agregarMetodoCalculoDescuento(producto) {
   // producto.porcentajeDeDescuento -> 0.2 (o simplemente ".2")
   // producto.calcularPrecioDescuento() -> 20 - (20 * 0.2)
   // Tu código:
+  let aplicarDescuento = (producto) => {
+    producto.calcularPrecioDescuento = function () {
+      let descuento = producto["precio"] * producto["porcentajeDeDescuento"];
+      return producto["precio"] - descuento;
+    };
+    return producto;
+  };
+  return aplicarDescuento(producto);
 }
 
 // No modificar nada debajo de esta línea
