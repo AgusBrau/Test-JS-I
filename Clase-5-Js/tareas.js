@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 function counter() {
   // Retorna una funcion que cuando sea invocada retorne un valor creciente.
@@ -7,6 +7,11 @@ function counter() {
   // ejemplo: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  let num = 1;
+  function numCounter() {
+    return num++;
+  }
+  return numCounter;
 }
 
 function cacheFunction(cb) {
