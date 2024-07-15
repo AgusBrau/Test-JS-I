@@ -104,7 +104,7 @@ function crearInstanciaPersona(nombre, apellido, edad, dir) {
 function agregarMetodo() {
   //La función agrega un método "datos" a la clase Persona que toma el nombre y la edad de la persona y devuelve:
   //Ej: "Juan, 22 años"
-  //Tu código:
+  //Tu código: https://stackoverflow.com/questions/55230215/how-to-modify-the-constructor-of-an-es6-class
   Object.getPrototypeOf(Persona.prototype).DATOS = function () {
     let result = this.nombre + ", " + this.edad + " años";
     return result;
